@@ -71,6 +71,8 @@ for f = 1:length(oscPrefFreq)
                 oscPrefFreq(f)));
         end
     end
+    exportgraphics(gcf,['OsciFreq_' num2str(oscPrefFreq(f)) 'Hz_tACSeffect.pdf'],'ContentType','vector')
+
 end
 
 %run the model only for the values to plot in Fig4b
@@ -97,8 +99,8 @@ percentChange = squeeze(100*(amp(:, 2,f,:) - amp(:, 1,f,:))./amp(:, 1,f,:));
 colors2Plot = colormap('autumn');
 figure
 hold on
-for c =1:length(colors2plot)
-plot((tACSfreqs./oscPrefFreq-1), percentChange(c,:),'Color',colors2Plot(c*25-24,:),'LineStyle','-','Marker','o','LineWidth',2)
+for c =1:size(percentChange,1)
+plot((tACSfreqs./oscPrefFreq-1), percentChange(c,:),'Color',colors2Plot(c*25-24,:),'LineStyle','-','LineWidth',2)
 legend(num2str(pcts(c)))
 end
 ylabel('Percent Change')
