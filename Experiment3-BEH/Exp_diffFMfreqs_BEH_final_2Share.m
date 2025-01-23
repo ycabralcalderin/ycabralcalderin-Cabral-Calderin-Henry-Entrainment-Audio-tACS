@@ -6,9 +6,9 @@ clc
 % 0. Define some variables
 mainDIR = uigetdir();
 outDIR = fullfile(mainDIR,'ANA/');
-addpath('/Users/yuranny.cabral/Documents/MATLAB/CircStat2012a')
+addpath('/CircStat2012a')
 
-subjects = {'ATE26' 'BAO30' 'BEI24' 'CSA27' 'EGA23' 'EI31' 'ESA20' 'LA03' 'LYS16' 'MDS07' 'SUL03' 'WEC24'};
+subjects = {'1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12'};
 
 phaseBins = 15;
 %preallocating some variables first
