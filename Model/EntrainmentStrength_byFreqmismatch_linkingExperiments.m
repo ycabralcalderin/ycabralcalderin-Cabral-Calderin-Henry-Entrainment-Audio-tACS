@@ -4,7 +4,7 @@ clc
 close all
 
 load('percentChange.mat')
-load('/Users/yuranny.cabral/ownCloud - yuranny.cabral-calderin@ae.mpg.de@owncloud.gwdg.de/Paper_tACS_FMmodDepth/FinalScripts/OscillatorModel_amp','amp')
+load('OscillatorModel_amp','amp')
 %model variable is strength x tacs/baseline x oscifreq x tACS freq
 
 %first compute percent change to baseline
@@ -120,41 +120,17 @@ ylim([-5 8])
 subplot(2,2,4)
 plotSpread(GroupRF(clusterIDcommon==2)')
 ylim([0 5])
-% %Plotting figure with comparing across tasks
-% %define subject and protocol info
-% SUBJlist = {'ABI24' 'ATE26' 'BAO30' 'BBB19' 'BWC24' 'CSA27' 'EDI31' 'EGA23' 'EOE26' 'ESA20' 'HAE30' 'KWA10' 'LCS16' 'LPA03' 'MDS07' 'MUL19' 'OLDO03' 'PLU28' 'SFE21' 'SKN24' 'SRL03' 'TDN16' 'VEI09' 'ZJE04'};
-% %EEGprefereFreList
-% %%%% IN EEG PREFERED FREQ EXP:
-% %ABI24=Bei24
-% %EDI31=Ei31
-% %LPA03=LA03
-% %LCS16=lys16
-% %SRL03=SUL03
-% %BWC24=WEC24
-% %subjects = {'ATE26' 'BAO30' 'Bei24' 'CSA27' 'EGA23' 'Ei31' 'ESA20' 'LA03' 'lys16' 'MDS07' 'SUL03' 'WEC24'};
 % commonSubj = [1 2 3 5 6 7 8 10 13 14 15 21];
 % clusterIDcommon = T3(commonSubj);
 
 %plot behavior diffFM according to model
-load('/Volumes/Projects/2021-0293-EntEcho/diffFMsFinal/Data/BEH/GroupData_diffFM_1500ms.mat')
+load('GroupData_diffFM_1500ms.mat')
 
 %same as before but now for neural data
-load('/Volumes/Projects/2021-0293-EntEcho/diffFMsFinal/diffFM_EEG_Group_Results.mat','GroupMeanNormV','GroupMeanNorm')
+load('diffFM_EEG_Group_Results.mat','GroupMeanNormV','GroupMeanNorm')
 
 %correlate amplitude across conditions
-% %define subject and protocol info
-% SUBJlist = {'ABI24' 'ATE26' 'BAO30' 'BBB19' 'BWC24' 'CSA27' 'EDI31' 'EGA23' 'EOE26' 'ESA20' 'HAE30' 'KWA10' 'LCS16' 'LPA03' 'MDS07' 'MUL19' 'OLDO03' 'PLU28' 'SFE21' 'SKN24' 'SRL03' 'TDN16' 'VEI09' 'ZJE04'};
-% %EEGprefereFreList
-% %%%% IN EEG PREFERED FREQ EXP:
-% %ABI24=Bei24
-% %EDI31=Ei31
-% %LPA03=LA03
-% %LCS16=lys16
-% %SRL03=SUL03
-% %BWC24=WEC24
-% %subjects = {'ATE26' 'BAO30' 'Bei24' 'CSA27' 'EGA23' 'Ei31' 'ESA20' 'LA03' 'lys16' 'MDS07' 'SUL03' 'WEC24'};
-% commonSubj = [1 2 3 5 6 7 8 10 13 14 15 21];
-reOrdertACS = [2 3 1 6 8 7 10 14 13 15 21 5];
+reOrdertACS = [2 3 1 6 8 7 10 14 13 15 21 5]; %tACS participants did not have the same order as eeg ones, participants need to be reordered
 [rho1,p1] = corr(groupfitamp(:,1),GroupMeanNormV(:,1,3),'type','Spearman')
 [rho2,p2] = corr(groupfitamp(:,2),GroupMeanNormV(:,2,3),'type','Spearman')
 [rho3,p3] = corr(groupfitamp(:,3),GroupMeanNormV(:,3,3),'type','Spearman')
